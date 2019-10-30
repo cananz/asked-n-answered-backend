@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
-  resources :answers
-  resources :prompts
-  resources :projects
-  resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :users, only: [:index, :show, :update, :create] do
+    resources :projects, only: [:index, :show, :update, :create, :destroy]
+  end
+
+  resources :projects, only: [:index, :show, :update, :create, :destroy] do
+    resources :prompts, only: [:index, :show, :update, :create, :destroy] do
+      resources :answers, only: [:index, :show, :update, :create, :destroy]
+    end
+  end
+
+  resources :prompts, only: [:index, :show, :update, :create, :destroy] do
+    resources :answers, only: [:index, :show, :update, :create, :destroy]
+  end
+
+
 end
