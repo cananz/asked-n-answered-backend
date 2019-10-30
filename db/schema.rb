@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2019_10_29_221522) do
     t.integer "project_id"
     t.string "content"
     t.string "img"
-    t.string "type"
+    t.string "prompt_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

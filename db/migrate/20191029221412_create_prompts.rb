@@ -4,7 +4,7 @@ class CreatePrompts < ActiveRecord::Migration[6.0]
       t.integer :project_id
       t.string :content
       t.string :img
-      t.string :type
+      t.string :prompt_type
 
       t.timestamps
     end
