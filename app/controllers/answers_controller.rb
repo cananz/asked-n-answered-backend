@@ -8,4 +8,7 @@ class AnswersController < ApplicationController
     answer = Answer.find(params[:id])
     render json: answer
   end
+
+
+  
 end
