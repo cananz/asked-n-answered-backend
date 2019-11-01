@@ -4,6 +4,7 @@ class UserSerializer < ActiveModel::Serializer
 # set up how I want each user's projects to be structured on user_path
   def projects
     self.object.projects.map do |project_obj|
+      #create an obj from each project with keys :id, :title, :subtitle
       {
         id: project_obj.id,
         title: project_obj.title,
@@ -11,5 +12,5 @@ class UserSerializer < ActiveModel::Serializer
       }
     end
   end
-  
+
 end

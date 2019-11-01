@@ -13,6 +13,13 @@ class ProjectsController < ApplicationController
     render json: project
   end
 
+
+
+
+
+
+
+
   # def create
   # end
   #

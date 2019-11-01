@@ -1,6 +1,5 @@
 class ProjectSerializer < ActiveModel::Serializer
   attributes :id, :user_email, :title, :subtitle, :prompts
-  # belongs_to :user
 
   def prompts
     self.object.prompts.map do |prompt_obj|
