@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
   end
 
   def show
-    session = Session.find(params[:id])
+    
+    session = Session.find_by(pin: params[:pin])
     render json: session
   end
 
