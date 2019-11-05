@@ -1,5 +1,5 @@
 class SessionSerializer < ActiveModel::Serializer
-  attributes :id, :pin, :is_live#, :project #, :host_email
+  attributes :id, :pin, :is_live, :host#, :project #, :host_email
   belongs_to :project
   # def project
   #   project = self.object.project
@@ -10,7 +10,7 @@ class SessionSerializer < ActiveModel::Serializer
   #   }
   # end
 
-  def host_email
+  def host
     self.object.project.user.email
   end
 
