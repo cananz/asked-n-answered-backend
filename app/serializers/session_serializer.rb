@@ -1,22 +1,26 @@
 class SessionSerializer < ActiveModel::Serializer
-  attributes :id, :pin, :is_live, :host#, :project #, :host_email
-  belongs_to :project
-  # def project
-  #   project = self.object.project
-  #   return {
-  #     id: self.object.project.id,
-  #     title: self.object.project.title,
-  #     subtitle: self.object.project.subtitle
-  #   }
-  # end
+  attributes :id, :pin, :is_live, :host, :title, :subtitle, :prompts
 
   def host
     self.object.project.user.email
   end
 
-  # def responses
-  #   # self.object
-  # end
+  def prompts
+    self.object.project.prompts.map do |prompt_obj|
+      {
+        content: prompt_obj.content,
+        image: prompt_obj.img,
+        answers: prompt_obj.pass_answers
+      }
+    end
+  end
 
+  def title
+    self.object.project.title
+  end
+
+  def subtitle
+    self.object.project.subtitle
+  end
 
 end
