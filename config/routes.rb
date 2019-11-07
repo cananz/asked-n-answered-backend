@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+  get '/sessions/live', to: 'sessions#index', as: 'sessions'
   get '/sessions/:pin', to: 'sessions#show', as: 'session'
   resources :sessions, only: [:create, :update]
   resources :users, only: [:index, :show, :update, :create] do

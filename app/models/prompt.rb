@@ -6,7 +6,7 @@ class Prompt < ApplicationRecord
     self.answers.map do |answer|
       {
         content: answer.content,
-        value: answer.correct
+        correct: answer.correct
       }
     end
   end

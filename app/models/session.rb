@@ -38,5 +38,8 @@ class Session < ApplicationRecord
     self.set_pin
   end
 
+  def self.check_session_list
+    return Session.where(is_live: true).pluck(:pin)
+  end
 
 end
