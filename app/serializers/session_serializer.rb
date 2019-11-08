@@ -8,6 +8,7 @@ class SessionSerializer < ActiveModel::Serializer
   def prompts
     self.object.project.prompts.map do |prompt_obj|
       {
+        id: prompt_obj.id,
         content: prompt_obj.content,
         image: prompt_obj.img,
         answers: prompt_obj.pass_answers
