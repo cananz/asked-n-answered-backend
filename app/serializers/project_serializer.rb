@@ -6,6 +6,7 @@ class ProjectSerializer < ActiveModel::Serializer
       {
         id: prompt_obj.id,
         content: prompt_obj.content,
+        img: prompt_obj.img,
         type: prompt_obj.prompt_type,
         correctAnswer: prompt_obj.answers.select(:id, :content).find_by(correct: true),
         incorrectAnswers: prompt_obj.answers.select(:id, :content).where(correct: false)
@@ -16,5 +17,9 @@ class ProjectSerializer < ActiveModel::Serializer
   def user
     self.object.user.email
   end
+
+  # def pin
+  #   self.object.sessions.pin
+  # end
 
 end
