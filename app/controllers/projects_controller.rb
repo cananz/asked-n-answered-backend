@@ -34,9 +34,9 @@ class ProjectsController < ApplicationController
     content = params[:content]
     img = params[:img]
     prompt = Prompt.create(project: project, content: content, img: img)
-
-    Answer.create(content: params[:correctAnswer], correct: true, prompt: prompt)
     wrong = params[:incorrectAnswers]
+    # byebug
+    Answer.create(content: params[:correctAnswer], correct: true, prompt: prompt)
     wrong.each {|answer| Answer.create(content: answer, correct: false, prompt: prompt)}
     render json: project
   end
