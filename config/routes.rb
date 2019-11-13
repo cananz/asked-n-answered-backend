@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :prompts, only: [:index, :show, :create, :update, :destroy] do
+  resources :prompts, only: :destroy
   #   resources :answers, only: [:index, :show, :create, :update, :destroy]
   # end
 
