@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
       # prompts: [empty_prompt]
       })
 
+    session = Session.create(project: project, is_live: false)
       # byebug
 
     render json: project
@@ -43,7 +44,15 @@ class ProjectsController < ApplicationController
     render json: projects
   end
 
+def toggle_session
+  project = Project.find(params[:id])
+  # session = Session.find_by(pin: params[:pin])
+  session = project.sessions.first
+  # byebug
+  session.update(is_live: !session.is_live)
 
+  render json: project
+end
 
 
 

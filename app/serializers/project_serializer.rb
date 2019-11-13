@@ -1,5 +1,5 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :user, :title, :subtitle, :prompts
+  attributes :id, :user, :title, :subtitle, :live, :pin, :prompts
 
   def prompts
     self.object.prompts.map do |prompt_obj|
@@ -18,8 +18,16 @@ class ProjectSerializer < ActiveModel::Serializer
     self.object.user.email
   end
 
-  # def pin
-  #   self.object.sessions.pin
-  # end
+  def live
+    if self.object.sessions.where(is_live: true).count > 0
+      return true
+    else
+      return false
+    end
+  end
+
+  def pin
+    self.object.sessions.first.pin
+  end
 
 end
