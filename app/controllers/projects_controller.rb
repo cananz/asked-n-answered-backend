@@ -38,7 +38,9 @@ class ProjectsController < ApplicationController
     # byebug
     Answer.create(content: params[:correctAnswer], correct: true, prompt: prompt)
     wrong.each {|answer| Answer.create(content: answer, correct: false, prompt: prompt)}
-    render json: project
+
+    projects = project.user.projects
+    render json: projects
   end
 
 
