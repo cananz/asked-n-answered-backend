@@ -6,88 +6,160 @@ require 'JSON'
 mcz = User.find_or_create_by(id: 1, email: 'marisa@email.com', first_name: 'marisa', last_name: 'canan')
 
 # --------PROJECT {title:string, subtitle:string, user_id}--------
-proj = Project.find_or_create_by(id: 2, title: "Let's Play", subtitle: 'How well do you know your favorite board games?', user: mcz)
-# Project.find_or_create_by(id: 1, title: 'Did you know...?', subtitle: 'random trivia', user: mcz)
-
+# proj = Project.find_or_create_by(id: 2, title: "Let's Play", subtitle: 'How well do you know your favorite board games?', user: mcz)
+# proj = Project.find_or_create_by(id: 1, title: 'Did you know...?', subtitle: 'random trivia', user: mcz)
+proj = Project.find_or_create_by(title: "Pass the Remote", subtitle: "TV Trivia", user: mcz)
 # --------PROMPT {content:string, prompt_type:string, project_id} --------
 # --------ANSWER {content:string, prompt_id, correct:boolean} --------
 
 
 # <<<<<<<<<<<<<>>>>>>>>>>>>> JSON COPY/PASTED FROM API <<<<<<<<<<<<<>>>>>>>>>>>>>
-  # seed_data_1 = [
-  #   {"category":"Entertainment: Television",
-  #     "type":"multiple",
-  #     "difficulty":"easy",
-  #     "question":"In the TV show &#039;M*A*S*H&#039;, what was the nickname of Corporal Walter O&#039;Reilly?",
-  #      "correct_answer":"Radar",
-  #      "incorrect_answers":["Hawkeye",
-  #        "Hot Lips",
-  #        "Trapper"]},
-  #
-  #   {"category":"Animals",
-  #     "type":"multiple",
-  #     "difficulty":"hard",
-  #     "question":"Which species of Brown Bear is not extinct?",
-  #     "correct_answer":"Syrian Brown Bear",
-  #     "incorrect_answers":["California Grizzly Bear",
-  #       "Atlas Bear",
-  #       "Mexican Grizzly Bear"]},
-  #
-  #   {"category":"Science: Mathematics",
-  #     "type":"multiple",
-  #     "difficulty":"hard",
-  #     "question":"How many zeptometres are inside one femtometre?",
-  #     "correct_answer":"1,000,000",
-  #     "incorrect_answers":["10", "1,000,000,000", "1000"]},
-  #
-  #   {"category":"Art",
-  #     "type":"multiple",
-  #     "difficulty":"hard",
-  #     "question":"Albrecht D&uuml;rer&#039;s birthplace and place of death were in...",
-  #     "correct_answer":"N&uuml;rnberg",
-  #     "incorrect_answers":["Augsburg", "Bamberg", "Berlin"]},
-  #
-  #   {"category":"Entertainment: Video Games",
-  #     "type":"multiple",
-  #     "difficulty":"easy",
-  #     "question":"What is the default alias that Princess Garnet goes by in Final Fantasy IX?",
-  #     "correct_answer":"Dagger",
-  #     "incorrect_answers":["Dirk", "Garnet", "Quina"]},
-  #
-  #   {"category":"Science & Nature",
-  #     "type":"multiple",
-  #     "difficulty":"medium",
-  #     "question":"A positron is an antiparticle of a what?",
-  #     "correct_answer":"Electron",
-  #     "incorrect_answers":["Neutron", "Proton", "Photon"]},
-  #
-  #   {"category":"Entertainment: Japanese Anime & Manga",
-  #     "type":"multiple",
-  #     "difficulty":"easy",
-  #     "question":"On what medium was &quot;Clannad&quot; first created?",
-  #     "correct_answer":"Visual novel",
-  #     "incorrect_answers":["Anime", "Manga", "Light novel"]},
-  #
-  #   {"category":"Entertainment: Film",
-  #     "type":"multiple",
-  #     "difficulty":"easy",
-  #     "question":"What was Bruce Campbell&#039;s iconic one-liner after getting a chainsaw hand in Evil Dead 2?",
-  #     "correct_answer":"Groovy.",
-  #     "incorrect_answers":["Gnarly.", "Perfect.", "Nice."]},
-  #
-  #   {"category":"Entertainment: Television",
-  #     "type":"multiple",
-  #     "difficulty":"medium",
-  #     "question":"On the NBC show Community what was Star Burns&#039; real name?",
-  #     "correct_answer":"Alex",
-  #     "incorrect_answers":["Todd", "Neal", "Grimus"]},
-  #
-  #   {"category":"Entertainment: Music",
-  #     "type":"multiple",
-  #     "difficulty":"easy",
-  #     "question":"Which music publication is often abbreviated to NME?",
-  #     "correct_answer":"New Musical Express",
-  #     "incorrect_answers":["New Metro Entertainment", "Next Musical Enterprise", "North Manchester Express"]}]
+  seed_data_1 = [
+  {
+      "category":"Entertainment: Television",
+      "type":"multiple",
+      "difficulty":"easy",
+      "question":"In the TV show M*A*S*H, what was the nickname of Corporal Walter O'Reilly?",
+       "correct_answer":"Radar",
+       "incorrect_answers":["Hawkeye",
+         "Hot Lips",
+         "Trapper"]
+ },
+ {
+    "category": "Entertainment: Television",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "What TV show is about a grandfather dragging his grandson around on adventures?",
+    "correct_answer": "Rick &amp; Morty",
+    "incorrect_answers": [
+        "Family Guy",
+        "South Park",
+        "American Dad"
+      ]
+  },
+  {
+     "category": "Entertainment: Television",
+     "type": "multiple",
+     "difficulty": "easy",
+     "question": "In which state of America was the Fresh Prince of Bel-Air born and raised in?",
+     "correct_answer": "Pennsylvania",
+     "incorrect_answers": [
+         "Florida",
+         "California",
+         "New Jersey"
+     ]
+   },
+  {
+      "category": "Entertainment: Television",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Who played Agent Fox Mulder in the TV sci-fi drama 'The X-Files'?",
+      "correct_answer": "David Duchovny",
+      "incorrect_answers": [
+          "Gillian Anderson",
+          "Robert Patrick",
+          "Mitch Pileggi"
+      ]
+  },
+  {
+      "category": "Entertainment: Television",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which of these Bojack Horseman characters is a human?",
+      "correct_answer": "Todd Chavez",
+      "incorrect_answers": [
+          "Lennie Turtletaub",
+          "Princess Carolyn",
+          "Tom Jumbo-Grumbo"
+      ]
+  },
+
+  {
+      "category": "Entertainment: Television",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Which of these characters in 'Stranger Things' has the power of Telekinesis?",
+      "correct_answer": "Eleven",
+      "incorrect_answers": [
+          "Mike",
+          "Lucas",
+          "Karen"
+      ]
+  },
+  {
+      "category": "Entertainment: Television",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In the television show Breaking Bad, what is the street name of Walter and Jesse's notorious product?",
+      "correct_answer": "Blue Sky",
+      "incorrect_answers": [
+          "Baby Blue",
+          "Rock Candy",
+          "Pure Glass"
+      ]
+  },
+  {
+      "category": "Entertainment: Television",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "In the show, Doctor Who, what does T.A.R.D.I.S stand for?",
+      "correct_answer": "Time And Relative Dimensions In Space",
+      "incorrect_answers": [
+          "Time And Resting Dimensions In Space",
+          "Time And Relative Dimensions In Style",
+          "Toilet Aid Rope Dog Is Soup"
+      ]
+  },
+
+  {
+      "category": "Entertainment: Television",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What Nickelodeon game show featured a house on the set that the contestants would ransack to find hidden objects?",
+      "correct_answer": "Finders Keepers",
+      "incorrect_answers": [
+          "Double Dare",
+          "Nickelodeon Guts",
+          "Nick Arcade"
+      ]
+  },
+  {
+      "category": "Entertainment: Television",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "Grant Gustin plays which superhero on the CW show of the same name?",
+      "correct_answer": "The Flash",
+      "incorrect_answers": [
+          "The Arrow",
+          "Black Canary",
+          "Daredevil"
+      ]
+  },
+  {
+      "category": "Entertainment: Television",
+      "type": "multiple",
+      "difficulty": "easy",
+      "question": "What NBC sitcom once saw two of its characters try to pitch NBC on a sitcom about nothing?",
+      "correct_answer": "Seinfeld",
+      "incorrect_answers": [
+          "Frasier",
+          "Becker",
+          "Friends"
+      ]
+  },
+  {
+    "category": "Entertainment: Television",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "Which of the following won the first season of American Idol in 2002?",
+    "correct_answer": "Kelly Clarkson",
+    "incorrect_answers": [
+        "Justin Guarini",
+        "Ruben Studdard",
+        "Chris Daughtry"
+    ]
+  }
+]
 
  # seed_data_2 = [
  #  {
@@ -174,18 +246,7 @@ proj = Project.find_or_create_by(id: 2, title: "Let's Play", subtitle: 'How well
  #          "Macchiato"
  #      ]
  #  },
- #  {
- #      "category": "Entertainment: Board Games",
- #      "type": "multiple",
- #      "difficulty": "hard",
- #      "question": "In Magic: The Gathering, what was a tribute card to Jamie Wakefield&#039;s late wife Marilyn, who loved horses?",
- #      "correct_answer": "Timbermare",
- #      "incorrect_answers": [
- #          "Loyal Pegasus",
- #          "Vryn Wingmare",
- #          "Sungrace Pegasus"
- #      ]
- #  },
+
  #  {
  #      "category": "Entertainment: Board Games",
  #      "type": "multiple",
@@ -212,8 +273,8 @@ proj = Project.find_or_create_by(id: 2, title: "Let's Play", subtitle: 'How well
  #  }]
 
 # <<<<<<<<>>>>>>>> PASS IN ARRAY OF PROMPT & 4 ANSWERS OBJECTS <<<<<<<<>>>>>>>>
-d.each do |obj|
-  p = Prompt.find_or_create_by(prompt_type: "multiple-choice", project: proj, content: obj[:question])
+seed_data_1.each do |obj|
+  p = Prompt.create(prompt_type: "multiple-choice", project: proj, content: obj[:question])
 
     # a =
     Answer.create(prompt: p, correct: true, content: obj[:correct_answer])

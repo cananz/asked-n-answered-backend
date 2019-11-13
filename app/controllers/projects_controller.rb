@@ -14,14 +14,14 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    empty_prompt = Prompt.create
-    empty_prompt.answers = [Answer.create(correct: true), Answer.create(correct: false), Answer.create(correct: false), Answer.create(correct: false)]
+    # empty_prompt = Prompt.create
+    # empty_prompt.answers = [Answer.create(correct: true), Answer.create(correct: false), Answer.create(correct: false), Answer.create(correct: false)]
 
     project = Project.create({
       user_id: params[:user_id],
       title: params[:title],
-      subtitle: params[:subtitle],
-      prompts: [empty_prompt]
+      subtitle: params[:subtitle]#,
+      # prompts: [empty_prompt]
       })
 
       # byebug
@@ -31,8 +31,14 @@ class ProjectsController < ApplicationController
 
   def update
     project = Project.find(params[:id])
-    byebug
-    # project.update()
+    content = params[:content]
+    img = params[:img]
+    prompt = Prompt.create(project: project, content: content, img: img)
+
+    Answer.create(content: params[:correctAnswer], correct: true, prompt: prompt)
+    wrong = params[:incorrectAnswers]
+    wrong.each {|answer| Answer.create(content: answer, correct: false, prompt: prompt)}
+    render json: project
   end
 
 
