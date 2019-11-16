@@ -15,7 +15,7 @@ class Session < ApplicationRecord
 
   def self.get_random_string(length=5)
     # source=("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a + ["_","-","."]
-    source = ('A'..'Z').to_a + (2..9).to_a
+    source = ('A'..'Z').to_a# + (2..9).to_a
     new_pin = ""
     length.times{ new_pin += source[rand(source.size)].to_s }
     return new_pin
