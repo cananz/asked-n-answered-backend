@@ -44,24 +44,31 @@ class ProjectsController < ApplicationController
     render json: projects
   end
 
-def toggle_session
-  project = Project.find(params[:id])
-  # session = Session.find_by(pin: params[:pin])
-  session = project.sessions.first
-  # byebug
-  session.update(is_live: !session.is_live)
+  def toggle_session
+    project = Project.find(params[:id])
+    # session = Session.find_by(pin: params[:pin])
+    session = project.sessions.first
+    # byebug
+    session.update(is_live: !session.is_live)
 
-  render json: project
-end
-
-
-
-
-
-  private
-
-  def project_params
-
+    render json: project
   end
+
+  def destroy
+    project = project.find(params[:id])
+    projects = project.user.projects
+    byebug
+    project.destroy
+    render json: projects
+  end
+
+
+
+
+  # private
+  #
+  # def project_params
+  #
+  # end
 
 end
