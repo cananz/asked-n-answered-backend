@@ -10,6 +10,9 @@ game_proj = Project.find_or_create_by(id: 2, title: "Let's Play", subtitle: 'How
 # proj = Project.find_or_create_by(id: 1, title: 'Did you know...?', subtitle: 'random trivia', user: mcz)
 tv_proj = Project.find_or_create_by(title: "Pass the Remote", subtitle: "TV Trivia", user: mcz)
 
+# --------SESSION {content:string, prompt_type:string, project_id} --------
+Session.find_or_create_by(id: 1, project: game_proj, is_live: true)
+Session.find_or_create_by(id: 2, project: tv_proj, is_live: true)
 
 # --------PROMPT {content:string, prompt_type:string, project_id} --------
 # --------ANSWER {content:string, prompt_id, correct:boolean} --------
