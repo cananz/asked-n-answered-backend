@@ -29,8 +29,7 @@ ActiveRecord::Schema.define(version: 2019_11_13_175952) do
     t.string "subtitle"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "pin"
-    t.boolean "live"
+
   end
 
   create_table "prompts", force: :cascade do |t|
