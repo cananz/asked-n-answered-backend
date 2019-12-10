@@ -8,4 +8,12 @@ class Project < ApplicationRecord
   #
   # end
 
+  def pin
+    if self.sessions.count > 0
+      self.sessions.first.pin
+    else
+      "no sessions"
+    end
+  end
+
 end

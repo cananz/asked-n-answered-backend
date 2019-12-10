@@ -24,7 +24,7 @@ class ProjectsController < ApplicationController
       # prompts: [empty_prompt]
       })
 
-    session = Session.create(project: project, is_live: false)
+    session = Session.create(project: project, is_live: true)
       # byebug
 
     render json: project
