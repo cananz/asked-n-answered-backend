@@ -14,8 +14,9 @@ class SessionSerializer < ActiveModel::Serializer
   #     {
   #       id: prompt_obj.id,
   #       content: prompt_obj.content,
-  #       image: prompt_obj.img,
-  #       answers: prompt_obj.pass_answers
+  #       img: prompt_obj.img,
+  #       # type: prompt_obj.prompt_type,
+  #       answers: prompt_obj.answers.select(:id, :content, :correct)
   #     }
   #   end
   # end
@@ -27,8 +28,8 @@ class SessionSerializer < ActiveModel::Serializer
         content: prompt_obj.content,
         img: prompt_obj.img,
         # type: prompt_obj.prompt_type,
-        correctAnswer: prompt_obj.answers.select(:id, :content).find_by(correct: true),
-        incorrectAnswers: prompt_obj.answers.select(:id, :content).where(correct: false)
+        correctAnswer: prompt_obj.answers.select(:id, :content, :correct).find_by(correct: true),
+        incorrectAnswers: prompt_obj.answers.select(:id, :content, :correct).where(correct: false)
       }
     end
   end
