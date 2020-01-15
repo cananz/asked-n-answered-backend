@@ -9,6 +9,21 @@ class SessionSerializer < ActiveModel::Serializer
     self.object.project.user.email
   end
 
+  def prompts
+    self.object.project.prompts.map do |prompt_obj|
+
+      {
+        id: prompt_obj.id,
+        content: prompt_obj.content,
+        img: prompt_obj.img,
+        type: prompt_obj.prompt_type,
+        answers: prompt_obj.answers.select(:id, :content, :correct).shuffle
+      }
+
+    end
+
+  end
+
   # def prompts
   #   self.object.project.prompts.map do |prompt_obj|
   #     {
@@ -16,23 +31,11 @@ class SessionSerializer < ActiveModel::Serializer
   #       content: prompt_obj.content,
   #       img: prompt_obj.img,
   #       # type: prompt_obj.prompt_type,
-  #       answers: prompt_obj.answers.select(:id, :content, :correct)
+  #       correctAnswer: prompt_obj.answers.select(:id, :content, :correct).find_by(correct: true),
+  #       incorrectAnswers: prompt_obj.answers.select(:id, :content, :correct).where(correct: false)
   #     }
   #   end
   # end
-
-  def prompts
-    self.object.project.prompts.map do |prompt_obj|
-      {
-        id: prompt_obj.id,
-        content: prompt_obj.content,
-        img: prompt_obj.img,
-        # type: prompt_obj.prompt_type,
-        correctAnswer: prompt_obj.answers.select(:id, :content, :correct).find_by(correct: true),
-        incorrectAnswers: prompt_obj.answers.select(:id, :content, :correct).where(correct: false)
-      }
-    end
-  end
 
   def title
     self.object.project.title
