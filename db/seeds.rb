@@ -1,6 +1,11 @@
 # require 'rest-client'
 # require 'pry'
 
+Project.destroy_all
+Session.destroy_all
+Prompt.destroy_all
+Answer.destroy_all
+
 
 # --- USER {email:string, first_name:string, last_name:string, avatar:string}---
 mcz = User.find_or_create_by(id: 1, email: 'marisa@email.com', first_name: 'marisa', last_name: 'canan')
